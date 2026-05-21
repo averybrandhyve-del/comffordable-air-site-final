@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us | Comffordable Air Solutions" description="Contact Comffordable Air Solutions for expert HVAC repair and installation in St. Petersburg, Tampa, and Clearwater. Get a free quote today.">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: #111;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+        }
+
+        .contact-item {
+            color: var(--primary-purple) !important;
+        }
+
+        .contact-item a {
+            color: var(--primary-purple) !important;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .contact-item:hover,
+        .contact-item:hover a,
+        .contact-item:hover span,
+        .contact-item:hover i {
+            color: var(--primary-purple-hover) !important;
+        }
+
+        .contact-item i {
+            color: var(--primary-purple) !important;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <main>
+        <section class="hero"
+            style="min-height: 55vh; align-items: center; justify-content: center;">
+            <img src="/images/IAQ.png" alt="Comffordable Air Solutions service vehicle ready for HVAC repair in the Tampa Bay Area" class="hero-bg-img" loading="eager" width="1920" height="800" />
+            <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.75));"></div>
+            <div class="container hero-content text-center" style="margin: 0 auto; width: 100%;">
+                <h1 style="font-size: 6rem; text-shadow: 2px 4px 20px rgba(0,0,0,0.8); margin-bottom: 1.25rem; letter-spacing: -0.02em;">Get In <span class="text-purple">Touch.</span></h1>
+                <p style="margin: 0 auto; font-size: 1.6rem; max-width: 600px; color: rgba(255,255,255,0.9); text-shadow: 1px 1px 8px rgba(0,0,0,0.7);">Book your HVAC inspection or repair today.</p>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="animate-on-scroll">
+                        <h2 style="margin-bottom: 2rem;">Expert Care at Your Door</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Fill out the form to request a quote or call
+                            us directly. We provide professional HVAC services to the <strong>Tampa Bay
+                                Area</strong>, including <a href="/service-areas/st-petersburg-fl" class="text-white"
+                                style="text-decoration: underline;">St. Petersburg</a>, <a href="/service-areas/tampa-fl"
+                                class="text-white" style="text-decoration: underline;">Tampa</a>, and <a
+                                href="/service-areas/clearwater-fl" class="text-white"
+                                style="text-decoration: underline;">Clearwater</a>.</p>
+
+                        <div class="glass-panel" style="margin-bottom: 2rem;">
+                            <div class="contact-item" style="font-size: 1.2rem; margin-bottom: 1rem;">
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="tel:+17276771700"> (727) 677-1700</a>
+                            </div>
+                            <div class="contact-item" style="font-size: 1.2rem; margin-bottom: 1rem;">
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:info@comairfl.com"> info@comairfl.com</a>
+                            </div>
+                            <div class="contact-item" style="font-size: 1.2rem; margin-bottom: 1rem;">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span> Serving the Greater Tampa Bay Area</span>
+                            </div>
+                            <div class="contact-item" style="font-size: 1.2rem;">
+                                <i class="fa-solid fa-clock"></i>
+                                <span> Mon - Sun: 8:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+
+                        <div class="animate-on-scroll"
+                            style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border); margin-top: 1rem;">
+                            <iframe
+                                src="https://maps.google.com/maps?q=Greater+Tampa+Bay+Area,+FL&t=&z=9&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel animate-on-scroll" style="transition-delay: 0.2s;">
+                        <h3 style="margin-bottom: 1.5rem; color: #111;">Request a Free Quote</h3>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Interested Service</label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Select a Service</option>
+                                    <option value="ac_repair">AC Repair & Installation</option>
+                                    <option value="heating">Heating & Furnaces</option>
+                                    <option value="maintenance">Preventative Maintenance</option>
+                                    <option value="emergency">Emergency Service</option>
+                                    <option value="other">Other / Not Sure</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="system">System Age / Type (if known)</label>
+                                <input type="text" id="system" name="system" placeholder="e.g. 5 year old Trane Central" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Details</label>
+                                <textarea id="message" name="message" rows="4"
+                                    placeholder="Tell us more about your HVAC needs..."></textarea>
+                            </div>
+                            <button type="submit" id="submitBtn" class="btn btn-primary" style="margin-top: 1rem; position: relative;">Send Request</button>
+                            <div id="formStatus" style="display: none; padding: 1rem; border-radius: 8px; margin-top: 1rem; font-weight: bold;"></div>
+                        </form>
+
+                        <script>
+                            document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+                                e.preventDefault();
+                                
+                                const form = e.target;
+                                const submitBtn = document.getElementById('submitBtn');
+                                const formStatus = document.getElementById('formStatus');
+                                
+                                // Show loading state
+                                submitBtn.disabled = true;
+                                submitBtn.innerText = 'Sending...';
+                                formStatus.style.display = 'none';
+
+                                const payload = {
+                                    name: document.getElementById('name').value,
+                                    email: document.getElementById('email').value,
+                                    phone: document.getElementById('phone').value,
+                                    service: document.getElementById('service').value,
+                                    system: document.getElementById('system').value,
+                                    message: document.getElementById('message').value,
+                                    source: window.location.href // Send the page URL for tracking
+                                };
+
+                                try {
+                                    const response = await fetch('https://services.leadconnectorhq.com/hooks/jd6pyXtJMDm0jnfx7iMr/webhook-trigger/acdac142-1c6a-48ac-a0fa-1381d40031e8', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'Accept': 'application/json'
+                                        },
+                                        body: JSON.stringify(payload)
+                                    });
+
+                                    // GHL webhooks typically return 200 OK
+                                    if (response.ok) {
+                                        formStatus.style.display = 'block';
+                                        formStatus.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
+                                        formStatus.style.color = '#4CAF50';
+                                        formStatus.style.border = '1px solid #4CAF50';
+                                        formStatus.innerText = 'Success! Your request has been sent. We will contact you shortly.';
+                                        form.reset();
+                                    } else {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                } catch (error) {
+                                    console.error('Error submitting form:', error);
+                                    formStatus.style.display = 'block';
+                                    formStatus.style.backgroundColor = 'rgba(244, 67, 54, 0.1)';
+                                    formStatus.style.color = '#f44336';
+                                    formStatus.style.border = '1px solid #f44336';
+                                    formStatus.innerText = 'Oops! Something went wrong. Please try calling us instead.';
+                                } finally {
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerText = 'Send Request';
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

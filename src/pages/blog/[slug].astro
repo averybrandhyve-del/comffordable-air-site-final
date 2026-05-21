@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// Related posts (same category, excluding current)
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+  .slice(0, 2);
+---
+
+<Layout title={`${post.data.title} | Comffordable Air Solutions`} description={post.data.description}>
+  <style>
+    .blog-hero {
+      min-height: 45vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, #0d1b2a, #1a2f45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(30,136,229,0.15) 0%, transparent 60%);
+    }
+
+    .article-body {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+    }
+
+    .article-body h2 {
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-purple);
+    }
+
+    .article-body p {
+      margin-bottom: 1.4rem;
+    }
+
+    .article-body a {
+      color: var(--primary-purple);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .article-body a:hover {
+      color: #61a82f;
+    }
+
+    .article-body strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .article-body ul, .article-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-chip {
+      display: inline-block;
+      background: rgba(30,136,229,0.1);
+      color: var(--primary-purple);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .related-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(97,168,47,0.4);
+    }
+
+    .related-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  </style>
+
+  <main>
+    <!-- Hero -->
+    <section class="blog-hero">
+      <div class="container" style="position: relative; z-index: 2;">
+        <div style="max-width: 780px;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+            <span style="background: var(--primary-purple); color: white; padding: 0.25rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">{post.data.category}</span>
+            <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">{formattedDate}</span>
+            <span style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">By {post.data.author}</span>
+          </div>
+          <h1 style="font-size: 2.8rem; color: white; line-height: 1.2; text-shadow: 0 2px 15px rgba(0,0,0,0.4);">{post.data.title}</h1>
+          <p style="font-size: 1.15rem; color: rgba(255,255,255,0.75); margin-top: 1rem; max-width: 650px;">{post.data.description}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article -->
+    <section style="padding: 4rem 0; background: var(--bg-darker);">
+      <div class="container">
+        <div class="article-body">
+          <Content />
+
+          <!-- Tags -->
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+            {post.data.tags.map(tag => (
+              <span class="tag-chip">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker)); border-top: 1px solid var(--glass-border); text-align: center;">
+      <div class="container animate-on-scroll">
+        <h2 style="margin-bottom: 1rem;">Need Help With Your HVAC?</h2>
+        <p style="max-width: 550px; margin: 0 auto 2rem; font-size: 1.05rem;">We serve the entire Greater Tampa Bay Area. Same-day and next-day availability for cooling failures.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="/contact" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 2rem;">Get a Free Quote</a>
+          <a href="tel:+17276771700" class="btn btn-outline" style="font-size: 1rem; padding: 0.9rem 2rem;"><i class="fa-solid fa-phone" style="margin-right: 0.5rem;"></i>(727) 677-1700</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Posts -->
+    {related.length > 0 && (
+      <section style="padding: 4rem 0; background: var(--bg-dark); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+          <h3 style="margin-bottom: 2rem; font-size: 1.5rem;">More Articles</h3>
+          <div class="related-grid">
+            {related.map(r => (
+              <a href={`/blog/${r.slug}`} class="related-card animate-on-scroll">
+                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--primary-purple); letter-spacing: 0.5px;">{r.data.category}</span>
+                <h4>{r.data.title}</h4>
+                <p>{r.data.description.slice(0, 100)}...</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Back to Gallery -->
+    <div style="text-align: center; padding: 2rem 0; background: var(--bg-darker); border-top: 1px solid var(--glass-border);">
+      <a href="/gallery" style="color: var(--text-secondary); font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Gallery &amp; Resources
+      </a>
+    </div>
+  </main>
+</Layout>

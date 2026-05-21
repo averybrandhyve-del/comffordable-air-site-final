@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import businessData from '../../config/business.json';
+
+export function getStaticPaths() {
+  return businessData.serviceAreas.map((area) => ({
+    params: { city: area.id },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+---
+
+<Layout 
+    title={`${area.name} AC Repair | Comffordable Air Solutions`} 
+    description={`Premium HVAC repair, installation, and preventative maintenance services in ${area.name}, ${area.state}.`}
+>
+    <main>
+        <section class="hero"
+            style="min-height: 50vh; align-items: center;">
+            <img src={area.hero} alt={`Comffordable Air Solutions HVAC service area in ${area.name}, ${area.state}`} class="hero-bg-img" loading="eager" width="1920" height="1080" />
+            <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));"></div>
+            <div class="container hero-content text-center" style="margin: 0 auto;">
+                <h1 style="font-size: 3.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); margin-bottom: 1rem;">AC
+                    Repair in <span class="text-purple">{area.name}, {area.state}.</span></h1>
+                <p
+                    style="margin: 0 auto; font-size: 1.2rem; max-width: 700px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                    Premium HVAC solutions delivered straight to your home in {area.name}. Experience Comffordable Air today.</p>
+                <div class="hero-buttons" style="justify-content: center; margin-top: 2rem;">
+                    <a href="/contact" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Book
+                        Now</a>
+                    <a href={`tel:${businessData.phone.replace(/[^0-9+]/g, '')}`} class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call {businessData.phone}</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section" style="padding-top: 4rem;">
+            <div class="container">
+                <div class="services-grid" style="align-items: center; margin-bottom: 4rem;">
+                    <div class="animate-on-scroll">
+                        <h2 style="margin-bottom: 1.5rem;">Your Local {area.name} HVAC Experts</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">As a dedicated service area, <strong>{area.name},
+                                {area.state}</strong> holds a special place for Comffordable Air Solutions. We traverse the entire area to
+                            provide the highest standard of AC repair, heating maintenance, and full system installations.</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Whether you need an emergency repair
+                            during the peak of the Florida summer, or a proactive maintenance tune-up to
+                            extend the life of your equipment, we have the expertise and the dedication
+                            to get it done right in your home.</p>
+                        <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-secondary);">
+                            <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-check text-purple"></i> Transparent,
+                                upfront pricing with no hidden fees.</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-check text-purple"></i> Professional
+                                HVAC technicians serving the {area.name} community.</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fa-solid fa-check text-purple"></i> 5-Star
+                                Rated for comfort you can afford and trust.</li>
+                        </ul>
+                    </div>
+                    <div class="animate-on-scroll glass-panel text-left" style="transition-delay: 0.2s;">
+                        <h3 style="margin-bottom: 1rem; border-left: 4px solid var(--primary-purple); padding-left: 1rem;">Service in {area.name}</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            Comffordable Air Solutions provides reliable HVAC care throughout <strong>{area.name}</strong>. 
+                            We take the guesswork out of air conditioning by handling the repairs and the optimization, 
+                            allowing you to enjoy a perfectly tempered home with family and friends.
+                        </p>
+                        <a href="/ac-repair" class="btn btn-primary" style="width: 100%;">View Services</a>
+                    </div>
+                </div>
+
+                {area.neighborhoods && (
+                    <div class="animate-on-scroll" style="margin-top: 4rem;">
+                        <div class="glass-panel" style="padding: 3rem;">
+                            <h2 style="margin-bottom: 2rem; text-align: center;">Serving All {area.name} Neighborhoods</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+                                {area.neighborhoods.map((hood) => (
+                                    <div style="color: var(--text-secondary); padding: 0.5rem; border: 1px solid var(--glass-border); border-radius: 8px;">
+                                        {hood}
+                                    </div>
+                                ))}
+                            </div>
+                            <p style="margin-top: 2rem; text-align: center; color: var(--text-secondary);">
+                                Our technicians are frequent visitors to your neighborhood 
+                                and beyond. We provide {area.name} residents with professional HVAC care
+                                that stands up to the intense Florida elements.
+                            </p>
+                        </div>
+                    </div>
+                )}
+
+                {area.landmarks && (
+                    <div class="animate-on-scroll" style="margin-top: 4rem;">
+                        <div class="section-title">
+                            <span>Local Favorites</span>
+                            <h2>Landmarks & Points of Interest</h2>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+                            {area.landmarks.map((landmark) => (
+                                <div class="glass-panel text-center" style="padding: 1.5rem; transition: transform 0.3s ease;">
+                                    <i class="fa-solid fa-map-pin text-purple" style="font-size: 1.5rem; margin-bottom: 1rem;"></i>
+                                    <h4 style="margin: 0; font-size: 1.1rem;">{landmark}</h4>
+                                </div>
+                            ))}
+                        </div>
+                        <p style="margin-top: 2rem; text-align: center; color: var(--text-secondary);">
+                            Whether you're visiting <strong>{area.landmarks[0]}</strong> or living right next to 
+                            <strong>{area.landmarks[area.landmarks.length - 1]}</strong>, we're your go-to HVAC pros 
+                            in the <strong>{area.name}</strong> area.
+                        </p>
+                    </div>
+                )}
+            </div>
+        </section>
+
+
+        <!-- Core Services Section for Internal Linking -->
+        <section style="background: var(--bg-dark); padding: 4rem 0;">
+            <div class="container animate-on-scroll">
+                <div class="section-title">
+                    <span>Expert Comfort</span>
+                    <h2>Premium HVAC in {area.name}</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="glass-panel text-center">
+                        <h4>AC Repair</h4>
+                        <p style="font-size: 0.9rem;">From emergency repairs to high-efficiency installations in {area.name}.</p>
+                        <a href="/ac-repair" class="text-purple" style="font-weight: 600;">Learn More &rarr;</a>
+                    </div>
+                    <div class="glass-panel text-center">
+                        <h4>Maintenance</h4>
+                        <p style="font-size: 0.9rem;">Proactive tune-ups and air quality solutions right here in {area.name}.</p>
+                        <a href="/maintenance" class="text-purple" style="font-weight: 600;">Learn More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geo Map Section for Local SEO -->
+        <section class="map-section" style="padding-bottom: 4rem;">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2>Our {area.name} Service Area</h2>
+                </div>
+                <div class="animate-on-scroll"
+                    style="border-radius: 12px; overflow: hidden; border: 1px solid var(--glass-border);">
+                    <iframe
+                        src={`https://maps.google.com/maps?q=${encodeURIComponent(area.name + ", " + area.state)}&t=&z=11&ie=UTF8&iwloc=&output=embed`}
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -1,0 +1,229 @@
+---
+import '../styles/global.css';
+import businessData from '../config/business.json';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// LocalBusiness SAB Schema Generator
+const schemaBase = {
+  "@context": "https://schema.org",
+  "@type": ["HVACBusiness", "LocalBusiness"],
+  "name": businessData.name,
+  "image": "https://comffordableairsolutions.com/images/logo.png",
+  "@id": "https://comffordableairsolutions.com",
+  "url": "https://comffordableairsolutions.com/",
+  "telephone": businessData.phone,
+  "email": businessData.email,
+  "license": "CAC1823516",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Florida HVAC License",
+    "value": "CAC1823516"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Riverview",
+    "addressRegion": "FL",
+    "postalCode": "33578",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 27.8661,
+    "longitude": -82.3288
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Tampa", "sameAs": "https://en.wikipedia.org/wiki/Tampa,_Florida" },
+    { "@type": "City", "name": "St. Petersburg", "sameAs": "https://en.wikipedia.org/wiki/St._Petersburg,_Florida" },
+    { "@type": "City", "name": "Clearwater", "sameAs": "https://en.wikipedia.org/wiki/Clearwater,_Florida" },
+    { "@type": "City", "name": "Riverview", "sameAs": "https://en.wikipedia.org/wiki/Riverview,_Florida" },
+    { "@type": "City", "name": "Brandon", "sameAs": "https://en.wikipedia.org/wiki/Brandon,_Florida" },
+    { "@type": "City", "name": "Largo", "sameAs": "https://en.wikipedia.org/wiki/Largo,_Florida" },
+    { "@type": "City", "name": "Bradenton", "sameAs": "https://en.wikipedia.org/wiki/Bradenton,_Florida" },
+    { "@type": "City", "name": "Sarasota", "sameAs": "https://en.wikipedia.org/wiki/Sarasota,_Florida" },
+    { "@type": "City", "name": "Seminole" },
+    { "@type": "City", "name": "Dunedin" },
+    { "@type": "City", "name": "Palm Harbor" },
+    { "@type": "City", "name": "Wesley Chapel" },
+    { "@type": "City", "name": "New Port Richey" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "HVAC Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AC Repair", "description": "Emergency and scheduled air conditioning repair for Tampa Bay homes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AC Installation", "description": "High-efficiency SEER2 air conditioning system installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Indoor Air Quality", "description": "HEPA filtration, UV-C air scrubbers, and whole-home dehumidification" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HVAC Maintenance", "description": "Preventative maintenance plans to extend system life and prevent breakdowns" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency HVAC Service", "description": "24/7 emergency air conditioning repair in the Tampa Bay Area" } }
+    ]
+  },
+  "sameAs": [
+    businessData.socials.facebook,
+    businessData.socials.instagram,
+    businessData.socials.yelp,
+    businessData.socials.nextdoor
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "38"
+  },
+  "priceRange": "$$"
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL.href} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		
+		<!-- Open Graph Settings -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL.href} />
+
+		<!-- Fonts and Icons -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+		
+		<script type="application/ld+json" set:html={JSON.stringify(schemaBase)} />
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": businessData.name,
+			"url": "https://comffordableairsolutions.com/",
+			"logo": "https://comffordableairsolutions.com/images/logo.png",
+			"sameAs": [
+				businessData.socials.facebook,
+				businessData.socials.instagram,
+				businessData.socials.yelp,
+				businessData.socials.nextdoor
+			],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": businessData.phone,
+				"contactType": "customer service",
+				"areaServed": "US-FL",
+				"availableLanguage": ["English"]
+			}
+		})} />
+	</head>
+	<body>
+		<Navbar />
+		<slot />
+		<Footer />
+
+		<!-- Floating Mobile CTA Bar -->
+		<div class="mobile-cta-bar" id="mobileCta">
+			<a href="tel:+17276771700" class="mobile-cta-call">
+				<i class="fa-solid fa-phone"></i> Call Now
+			</a>
+			<a href="/contact" class="mobile-cta-quote">
+				<i class="fa-solid fa-calendar-check"></i> Free Quote
+			</a>
+		</div>
+
+		<!-- Exit-Intent Popup -->
+		<div class="exit-popup-overlay" id="exitPopup">
+			<div class="exit-popup">
+				<button class="exit-popup-close" id="exitPopupClose" aria-label="Close popup">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+				<div class="exit-popup-icon">
+					<i class="fa-solid fa-snowflake"></i>
+				</div>
+				<h3>Wait — Don't Leave Without Your Free Quote!</h3>
+				<p>Get a no-obligation estimate for your home's HVAC repair or maintenance. Takes 30 seconds.</p>
+				<a href="/contact" class="btn btn-primary" style="width: 100%; text-align: center; font-size: 1.1rem; padding: 1rem;">Get My Free Quote</a>
+				<p style="font-size: 0.8rem; margin-top: 1rem; margin-bottom: 0;">Or call us directly: <a href="tel:+17276771700" class="text-purple" style="font-weight: 600;">(727) 677-1700</a></p>
+			</div>
+		</div>
+
+		<script>
+			// Intersection Observer for Scroll Animations
+			document.addEventListener('DOMContentLoaded', () => {
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.15
+				};
+
+				const observer = new IntersectionObserver((entries, observer) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('is-visible');
+							observer.unobserve(entry.target); // Only animate once
+						}
+					});
+				}, observerOptions);
+
+				const animatedElements = document.querySelectorAll('.animate-on-scroll');
+				animatedElements.forEach(el => observer.observe(el));
+
+				// Mobile CTA: hide when user is at the very top of the page
+				const mobileCta = document.getElementById('mobileCta');
+				if (mobileCta) {
+					window.addEventListener('scroll', () => {
+						if (window.scrollY > 300) {
+							mobileCta.classList.add('visible');
+						} else {
+							mobileCta.classList.remove('visible');
+						}
+					}, { passive: true });
+				}
+
+				// Exit-Intent Popup (desktop only, once per session)
+				const exitPopup = document.getElementById('exitPopup');
+				const exitPopupClose = document.getElementById('exitPopupClose');
+				const isContactPage = window.location.pathname.includes('/contact');
+				
+				if (exitPopup && !isContactPage && !sessionStorage.getItem('exitPopupShown')) {
+					document.addEventListener('mouseout', (e) => {
+						if (e.clientY <= 0 && !sessionStorage.getItem('exitPopupShown')) {
+							exitPopup.classList.add('visible');
+							sessionStorage.setItem('exitPopupShown', 'true');
+						}
+					});
+
+					exitPopupClose?.addEventListener('click', () => {
+						exitPopup.classList.remove('visible');
+					});
+
+					exitPopup.addEventListener('click', (e) => {
+						if (e.target === exitPopup) {
+							exitPopup.classList.remove('visible');
+						}
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

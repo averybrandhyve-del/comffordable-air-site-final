@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Premium HVAC Repair & Installation | Comffordable Air Solutions" description="Comffordable Air Solutions provides expert AC repair, furnace maintenance, and HVAC installation in St. Petersburg, Tampa, and Clearwater, FL.">
+    <main>
+        <!-- A: Anchor (Hero Section) -->
+        <section class="hero" id="home">
+            <img src="/images/pic_5.jpg" alt="Comffordable Air Solutions HVAC work in Tampa Bay, FL" class="hero-bg-img" loading="eager" width="1920" height="1080" />
+            <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9));"></div>
+            <div class="container hero-content">
+                <h1>AC Repair &amp; HVAC Services in <span class="text-purple">Tampa Bay, FL</span></h1>
+                <p>Expert HVAC repair, installation, and maintenance across the Tampa Bay Area. We specialize in keeping your home perfectly tempered with quality service in 
+                    <a href="/service-areas/st-petersburg-fl" class="text-purple" style="text-decoration: underline;">St. Petersburg</a>, 
+                    <a href="/service-areas/tampa-fl" class="text-purple" style="text-decoration: underline;">Tampa</a>, and 
+                    <a href="/service-areas/clearwater-fl" class="text-purple" style="text-decoration: underline;">Clearwater</a>.</p>
+                <div class="hero-buttons">
+                    <a href="tel:+17276771700" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (727) 677-1700</a>
+                    <a href="/contact" class="btn btn-primary" style="position: relative; background: #d32f2f; box-shadow: 0 4px 15px rgba(211,47,47,0.5);"><i class="fa-solid fa-triangle-exclamation"></i> 24/7 Emergency Service</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Widget Section -->
+        <section style="background: var(--bg-darker); padding: 3rem 0 1.5rem; border-bottom: 1px solid var(--glass-border);">
+            <div class="container">
+                <script type='text/javascript' src='https://links.comairfl.com/reputation/assets/review-widget.js'></script>
+                <iframe class='lc_reviews_widget' src='https://links.comairfl.com/reputation/widgets/review_widget/jd6pyXtJMDm0jnfx7iMr' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%; min-height: 250px;'></iframe>
+            </div>
+        </section>
+
+
+        <!-- G: Guide (Process Section) -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>How It Works</span>
+                    <h2>The Comffordable Process</h2>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <h3>Book Service</h3>
+                        <p>Give us a call to discuss your HVAC system's specific needs and set up a consistent maintenance schedule.</p>
+                    </div>
+                    <div class="process-step animate-on-scroll" style="transition-delay: 0.2s">
+                        <div class="step-number">2</div>
+                        <h3>Expert Solutions</h3>
+                        <p>Comfort you can afford shouldn't mean cutting corners. Our specialists prioritize quality and transparency.</p>
+                    </div>
+                    <div class="process-step animate-on-scroll" style="transition-delay: 0.4s">
+                        <div class="step-number">3</div>
+                        <h3>We Handle the Work</h3>
+                        <p>Our experienced technicians provide quality, service-driven solutions with extreme attention to detail.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- G: Guide (Core Services) -->
+        <section id="services">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <span>Our Expertise</span>
+                    <h2>Premium HVAC Services</h2>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="glass-panel service-card animate-on-scroll">
+                        <i class="fa-solid fa-snowflake service-icon"></i>
+                        <h3>AC Repair & Install</h3>
+                        <p>Emergency repairs and high-efficiency installations to keep you cool during the Florida heat.
+                        </p>
+                        <span class="service-price">Custom Quotes</span>
+                        <a href="/ac-repair" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">View details</a>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-panel service-card animate-on-scroll" style="transition-delay: 0.2s">
+                        <i class="fa-solid fa-wind service-icon"></i>
+                        <h3>Indoor Air Quality (IAQ)</h3>
+                        <p>Florida's heat and humidity create the perfect breeding ground for mold, allergens, and airborne pollutants inside your home. Our IAQ solutions, including HEPA filtration, UV-C air scrubbers, and whole-home dehumidification, target the microscopic threats standard filters miss. Breathe cleaner air and protect your family from dust mites, bacteria, and VOCs circulating through your ductwork.</p>
+                        <span class="service-price">Custom Quotes</span>
+                        <a href="/iaq" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">Learn More</a>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-panel service-card animate-on-scroll" style="transition-delay: 0.4s">
+                        <i class="fa-solid fa-screwdriver-wrench service-icon"></i>
+                        <h3>Preventative Care</h3>
+                        <p>Florida AC systems run 10+ months a year, twice the wear of northern climates. <a href="/maintenance" class="text-purple" style="font-weight:600;">Proactive care</a> catches drain clogs, coil corrosion, and refrigerant loss before they become emergencies. Our maintenance plans extend system life and keep energy bills low.</p>
+                        <span class="service-price">Starting at $99</span>
+                        <a href="/maintenance" class="btn btn-outline"
+                            style="margin-top: 1.5rem; width: 100%; text-align: center;">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CTA Section -->
+        <section
+            style="background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker)); text-align: center; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+            <div class="container animate-on-scroll">
+                <h2 style="margin-bottom: 1rem;">Ready for Comffordable Comfort?</h2>
+                <p
+                    style="margin-bottom: 1rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Unhappy with your current service? It's time for consistency, communication, and quality.</p>
+                <p style="margin-bottom: 2rem; font-size: 1rem; font-style: italic; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Professional HVAC repair and air quality solutions for St. Petersburg, Tampa, and Clearwater.
+                </p>
+                <a href="/contact" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Get Your
+                    Free Quote</a>
+            </div>
+        </section>
+    </main>
+</Layout>

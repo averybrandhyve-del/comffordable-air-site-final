@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import businessData from '../../config/business.json';
+---
+
+<Layout title="Service Areas | HVAC Solutions Florida" description="Comffordable Air Solutions provides premium AC repair and maintenance to St. Petersburg, Tampa, and Clearwater.">
+    <main>
+        <section class="hero"
+            style="min-height: 400px; padding-top: 120px; align-items: flex-start;">
+            <img src="/images/service-areas-hero.jpg" alt="Comffordable Air Solutions HVAC service areas across the Tampa Bay Area" class="hero-bg-img" loading="eager" width="1920" height="800" />
+            <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8));"></div>
+            <div class="container hero-content text-center" style="margin: 0 auto;">
+                <h1 style="font-size: 3rem;">Service <span class="text-purple">Areas.</span></h1>
+                <p style="margin: 0 auto;">Premium HVAC maintenance delivered to your doorstep in the Tampa Bay Area.</p>
+            </div>
+        </section>
+
+        <section class="process-section" style="padding-top: 4rem;">
+            <div class="container">
+                <div class="section-title animate-on-scroll">
+                    <h2>We Come To You</h2>
+                    <p style="max-width: 600px; margin: 1rem auto; color: var(--text-secondary);">Don't suffer in the Florida
+                        heat with a broken AC. Our fully-equipped HVAC specialists travel to your home, 
+                        complete with all the necessary tools and professional-grade equipment.</p>
+                </div>
+
+                <div class="services-grid animate-on-scroll">
+                    {businessData.serviceAreas.map((area) => (
+                        <div class="glass-panel text-center">
+                            <i class="fa-solid fa-location-dot service-icon"></i>
+                            <h3>{area.name}, {area.state}</h3>
+                            <p>We provide consistent HVAC maintenance and expert equipment repair to all residential addresses in {area.name}.</p>
+                            <a href={`/service-areas/${area.id}`} class="btn btn-outline" style="margin-top: 1.5rem;">View {area.name} Services</a>
+                        </div>
+                    ))}
+                </div>
+
+                <div class="text-center animate-on-scroll" style="margin-top: 4rem;">
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">Don't see your city listed? We serve many other
+                        surrounding communities in the area.</p>
+                    <a href={`tel:+1${businessData.phone.replace(/[^0-9]/g, '')}`} class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;"><i class="fa-solid fa-phone"></i> Call to Verify Your Area</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

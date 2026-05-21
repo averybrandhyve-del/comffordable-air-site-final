@@ -1,0 +1,12 @@
+# Comffordable Air Solutions - robots.txt
+# Allow all search engine crawlers to access the site
+
+User-agent: *
+Allow: /
+
+# Block junk/utility paths
+Disallow: /_astro/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://comffordableairsolutions.com/sitemap-index.xml

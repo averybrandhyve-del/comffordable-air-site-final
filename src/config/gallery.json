@@ -1,0 +1,27 @@
+{
+  "photos": [
+    {
+      "src": "/images/gallery/placeholder.jpg",
+      "alt": "AC unit installation by Comffordable Air Solutions in Tampa Bay, FL",
+      "caption": "Residential AC Installation — Tampa, FL",
+      "category": "installation"
+    }
+  ],
+  "videos": [
+    {
+      "youtubeId": "dQw4w9WgXcQ",
+      "title": "How to Tell If Your AC Needs Repair — Tampa Bay HVAC Tips",
+      "description": "Our lead technician walks through the top warning signs that your AC system is about to fail, and what to do before it becomes an emergency."
+    },
+    {
+      "youtubeId": "dQw4w9WgXcQ",
+      "title": "What's Included in Our HVAC Maintenance Tune-Up",
+      "description": "A full walkthrough of everything our technicians check during a preventative maintenance visit — so you know exactly what you're paying for."
+    },
+    {
+      "youtubeId": "dQw4w9WgXcQ",
+      "title": "Florida Humidity and Your AC: What Most Homeowners Get Wrong",
+      "description": "Why standard AC systems struggle in Florida's subtropical climate and the IAQ upgrades that actually make a difference."
+    }
+  ]
+}

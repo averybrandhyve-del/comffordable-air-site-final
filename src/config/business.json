@@ -1,0 +1,62 @@
+{
+    "name": "Comffordable Air Solutions",
+    "phone": "(727) 677-1700",
+    "email": "info@comairfl.com",
+    "industry": "HVAC",
+    "location": {
+        "street": "Tampa Bay Area",
+        "city": "St. Petersburg",
+        "state": "FL",
+        "zip": "",
+        "country": "US"
+    },
+    "serviceAreas": [
+        {
+            "id": "st-petersburg-fl",
+            "name": "St. Petersburg",
+            "state": "FL",
+            "hero": "/images/st-pete-hero.jpg",
+            "wiki": "https://en.wikipedia.org/wiki/St._Petersburg,_Florida",
+            "neighborhoods": ["Old Northeast", "Snell Isle", "Historic Kenwood", "Shore Acres", "Gandy"],
+            "landmarks": ["The St. Pete Pier", "Salvador Dalí Museum", "Tropicana Field", "Sunken Gardens", "Fort De Soto Park"]
+        },
+        {
+            "id": "tampa-fl",
+            "name": "Tampa",
+            "state": "FL",
+            "hero": "/images/tampa-hero.jpg",
+            "wiki": "https://en.wikipedia.org/wiki/Tampa,_Florida",
+            "neighborhoods": ["Ybor City", "Hyde Park", "South Tampa", "Westchase", "Seminole Heights"],
+            "landmarks": ["Busch Gardens Tampa Bay", "The Florida Aquarium", "ZooTampa at Lowry Park", "Armature Works", "Tampa Riverwalk"]
+        },
+        {
+            "id": "clearwater-fl",
+            "name": "Clearwater",
+            "state": "FL",
+            "hero": "/images/clearwater-hero.jpg",
+            "wiki": "https://en.wikipedia.org/wiki/Clearwater,_Florida",
+            "neighborhoods": ["Sand Key", "Island Estates", "Clearwater Beach", "Countryside", "Morningside"],
+            "landmarks": ["Clearwater Marine Aquarium", "Pier 60", "Sand Key Park", "Spectrum Field", "Moccasin Lake Nature Park"]
+        }
+    ],
+    "services": [
+        {
+            "id": "ac_repair",
+            "name": "Air Conditioning Repair & Installation"
+        },
+        {
+            "id": "heating_systems",
+            "name": "Heating Systems & Furnaces"
+        },
+        {
+            "id": "preventative_maintenance",
+            "name": "Proactive Preventative Maintenance"
+        }
+    ],
+    "socials": {
+        "yelp": "https://www.yelp.com/biz/comffordable-air-solutions-st-petersburg",
+        "instagram": "https://www.instagram.com/comffordable_air/",
+        "facebook": "https://www.facebook.com/profile.php?id=61577480190749",
+        "nextdoor": "https://nextdoor.com/pages/comffordable-air-solutions/"
+    }
+}
