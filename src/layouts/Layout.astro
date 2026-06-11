@@ -135,6 +135,12 @@ const schemaBase = {
 				"availableLanguage": ["English"]
 			}
 		})} />
+		<script is:inline>
+			document.documentElement.classList.add('js');
+			document.addEventListener('DOMContentLoaded', () => {
+				document.body.classList.add('js');
+			});
+		</script>
 	</head>
 	<body>
 		<Navbar />
